@@ -4,6 +4,7 @@ export default function QakkWorkerApp() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isOnline, setIsOnline] = useState(false);
   const [language, setLanguage] = useState('EN');
+  const [showPassword, setShowPassword] = useState(false);
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,12 +17,12 @@ export default function QakkWorkerApp() {
       brand: "Qakk",
       title1: "Work",
       title2: "Time",
-      subtitle: "Track your time, get more done.",
+      subtitle: "Track your time,\nget more done.",
       emailPlaceholder: "Email address",
       passwordPlaceholder: "Password",
       rememberMe: "Remember me",
       forgotPassword: "Forgot password?",
-      loginBtn: "Log In →",
+      loginBtn: "Log In",
       or: "or",
       ssoBtn: "Sign in with SSO",
       eventPlaceholder: "Event Name (e.g. Gala)",
@@ -30,20 +31,18 @@ export default function QakkWorkerApp() {
       checkOutBtn: "Log Out",
       currentEventLbl: "ACTIVE SHIFT",
       clientLbl: "Client",
-      startedAtLbl: "Started at",
-      statusOnline: "Online",
-      statusOffline: "Ready"
+      startedAtLbl: "Started at"
     },
     DA: {
       brand: "Qakk",
       title1: "Work",
       title2: "Time",
-      subtitle: "Spor din tid, få mere fra hånden.",
+      subtitle: "Spor din tid,\nfå mere fra hånden.",
       emailPlaceholder: "E-mailadresse",
       passwordPlaceholder: "Adgangskode",
       rememberMe: "Husk mig",
       forgotPassword: "Glemt adgangskode?",
-      loginBtn: "Log ind →",
+      loginBtn: "Log ind",
       or: "eller",
       ssoBtn: "Log ind med SSO",
       eventPlaceholder: "Begivenhedsnavn",
@@ -52,9 +51,7 @@ export default function QakkWorkerApp() {
       checkOutBtn: "Tjek ud",
       currentEventLbl: "AKTIV VAGT",
       clientLbl: "Kunde",
-      startedAtLbl: "Startet kl",
-      statusOnline: "Online",
-      statusOffline: "Klar"
+      startedAtLbl: "Startet kl"
     }
   };
 
@@ -93,163 +90,192 @@ export default function QakkWorkerApp() {
 
   if (!isLoggedIn) {
     return (
-      <div className="flex flex-col justify-between w-full min-h-[100dvh] bg-[#f8fbff] px-6 py-6 font-sans text-slate-800 relative overflow-hidden">
-        {/* Background decorative soft blue blob matching the generated image */}
-        <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-blue-100/90 via-sky-100/50 to-transparent rounded-bl-[100px] pointer-events-none z-0"></div>
-
-        {/* Top Header */}
-        <div className="w-full flex justify-between items-center relative z-10">
-          <h1 className="text-3xl font-black text-[#0f172a] tracking-tight">Qakk</h1>
-          <button 
-            onClick={toggleLanguage}
-            className="text-xs font-bold text-blue-600 bg-white px-4 py-2 rounded-full shadow-sm border border-blue-100 hover:bg-blue-50 transition-all"
-          >
-            {language}
-          </button>
-        </div>
-
-        {/* Main Form Area */}
-        <div className="w-full max-w-sm mx-auto flex flex-col relative z-10 my-auto py-2">
+      <div className="min-h-[100dvh] flex justify-center bg-[#eef3fa] md:py-10 font-['Inter',sans-serif] text-[#16345f]">
+        <div className="relative w-full max-w-[430px] min-h-[100dvh] md:min-h-[920px] bg-white overflow-hidden flex flex-col justify-between px-7 pt-[50px] pb-[34px] md:rounded-[42px] md:shadow-[0_30px_80px_rgba(20,48,90,0.15)]">
           
-          {/* Title & Illustration Row */}
-          <div className="flex justify-between items-start mb-8">
-            <div className="flex-1 pr-2">
-              <h2 className="text-4xl font-black text-[#0f172a] tracking-tight leading-none mb-1">
-                {t.title1}
-              </h2>
-              <h2 className="text-4xl font-black text-[#0f172a] tracking-tight leading-none mb-3">
-                {t.title2}
-              </h2>
-              <div className="w-8 h-1 bg-blue-500 rounded-full mb-3"></div>
-              <p className="text-slate-400 text-xs font-medium leading-relaxed">
+          {/* Top / Hero Section */}
+          <div className="relative min-h-[465px] md:min-h-[485px] flex justify-between">
+            <div className="relative z-[5]">
+              {/* Qakk Logo */}
+              <div className="flex items-center relative text-[#102c55] text-[67px] md:text-[72px] font-bold leading-[0.9] tracking-[-5px]">
+                <span className="relative inline-block">
+                  Q
+                  <span className="absolute w-[10px] h-[48px] rounded-[8px] bg-[#087cff] rotate-[-42deg] left-[48px] top-[24px]"></span>
+                </span>
+                <span>akk</span>
+              </div>
+
+              {/* Title */}
+              <h1 className="mt-[65px] text-[#102c55] text-[55px] md:text-[60px] font-bold leading-[1.02] tracking-[-2.5px]">
+                Work<br />Time
+              </h1>
+
+              {/* Blue Line */}
+              <div className="w-[69px] h-[7px] rounded-[20px] bg-[#087cff] mt-[26px]"></div>
+
+              {/* Subtitle */}
+              <p className="mt-[32px] text-[#7086a7] text-[22px] md:text-[25px] leading-[1.45] font-medium tracking-[-0.5px] whitespace-pre-line">
                 {t.subtitle}
               </p>
             </div>
 
-            {/* 3D-style Clock Graphic matching the image */}
-            <div className="relative w-28 h-28 flex items-center justify-center bg-white/80 backdrop-blur-md rounded-[2rem] shadow-[0_10px_30px_rgba(59,130,246,0.15)] border border-blue-100 flex-shrink-0">
-              <svg className="w-14 h-14 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" fill="#eff6ff" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 7v5l3 3" />
-              </svg>
-              {/* Floating check badge */}
-              <div className="absolute -bottom-1.5 -right-1.5 w-9 h-9 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg border-2 border-white">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            {/* Clock illustration */}
+            <div className="absolute right-[-48px] md:right-[-42px] top-[90px] w-[300px] h-[330px] scale-[0.88] md:scale-100 origin-top-right">
+              <div className="absolute rounded-full w-[280px] h-[280px] right-[-25px] top-[-45px] bg-[radial-gradient(circle_at_40%_40%,#edf6ff,#e1efff)]"></div>
+              <div className="absolute rounded-full w-[230px] h-[150px] right-[35px] bottom-[5px] bg-[radial-gradient(ellipse,#edf6ff,#e4f1ff)]"></div>
+
+              {/* Clock */}
+              <div className="absolute w-[205px] h-[205px] left-[8px] top-[80px] rounded-full bg-gradient-to-br from-[#1290ff] to-[#0063e8] shadow-[0_18px_30px_rgba(0,103,232,0.22)] rotate-[-7deg] before:content-[''] before:absolute before:inset-[18px] before:rounded-full before:bg-white before:shadow-[inset_0_2px_8px_rgba(20,53,100,0.12)]">
+                <div className="absolute inset-[30px] rounded-full">
+                  <div className="absolute left-1/2 top-1/2 w-[10px] h-[55px] origin-bottom rounded-[10px] bg-[#1558a9] -translate-x-1/2 -translate-y-full rotate-[-12deg]"></div>
+                  <div className="absolute left-1/2 top-1/2 w-[8px] h-[73px] origin-bottom rounded-[10px] bg-[#1558a9] -translate-x-1/2 -translate-y-full rotate-[105deg]"></div>
+                  <div className="absolute w-[16px] h-[16px] rounded-full bg-[#1667c5] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+                </div>
+              </div>
+
+              {/* Check badge */}
+              <div className="absolute right-[5px] bottom-[38px] w-[112px] h-[112px] rounded-[25px] flex items-center justify-center bg-gradient-to-br from-[#438ffb] to-[#126ce8] shadow-[0_15px_28px_rgba(14,101,229,0.28)] z-[10]">
+                <svg className="w-[57px] h-[57px] fill-none stroke-white stroke-[6] stroke-linecap-round stroke-linejoin-round" viewBox="0 0 40 40">
+                  <path d="M8 21.5L17 30L33 11" />
                 </svg>
+              </div>
+
+              {/* Speed lines */}
+              <div className="absolute right-[18px] top-[65px] w-[75px] h-[65px]">
+                <span className="absolute block w-[13px] h-[57px] rounded-[20px] bg-[#087cff] right-[43px] top-0 rotate-[31deg]"></span>
+                <span className="absolute block w-[13px] h-[47px] rounded-[20px] bg-[#087cff] right-0 top-[25px] rotate-[64deg]"></span>
               </div>
             </div>
           </div>
 
-          {/* Form */}
-          <form onSubmit={handleLogin} className="w-full flex flex-col gap-3.5">
-            {/* Email Input */}
-            <div className="relative flex items-center">
-              <span className="absolute left-4 text-slate-400">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          {/* Login Form Section */}
+          <section className="relative z-[20] -mt-[6px]">
+            <form onSubmit={handleLogin}>
+              
+              {/* Email */}
+              <div className="relative w-full h-[76px] md:h-[82px] border-2 border-[#dce6f3] rounded-[28px] flex items-center bg-white/94 focus-within:border-[#a9caff] focus-within:ring-4 focus-within:ring-[#087cff]/[0.07] transition-all">
+                <div className="w-[65px] flex items-center justify-center flex-shrink-0">
+                  <svg className="w-[31px] h-[31px] fill-none stroke-[#7890b1] stroke-[1.8] stroke-linecap-round stroke-linejoin-round" viewBox="0 0 24 24">
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <path d="M3 7l9 6 9-6" />
+                  </svg>
+                </div>
+                <input 
+                  type="email" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={t.emailPlaceholder} 
+                  required
+                  className="w-full h-full border-0 outline-none bg-transparent text-[#102c55] font-['Inter',sans-serif] text-[19px] md:text-[21px] font-medium px-[20px] pl-[4px]"
+                />
+              </div>
+
+              {/* Password */}
+              <div className="relative w-full h-[76px] md:h-[82px] border-2 border-[#dce6f3] rounded-[28px] flex items-center bg-white/94 mt-[20px] focus-within:border-[#a9caff] focus-within:ring-4 focus-within:ring-[#087cff]/[0.07] transition-all">
+                <div className="w-[65px] flex items-center justify-center flex-shrink-0">
+                  <svg className="w-[31px] h-[31px] fill-none stroke-[#7890b1] stroke-[1.8] stroke-linecap-round stroke-linejoin-round" viewBox="0 0 24 24">
+                    <rect x="5" y="10" width="14" height="10" rx="2" />
+                    <path d="M8 10V7a4 4 0 018 0v3" />
+                    <circle cx="12" cy="15" r="1" />
+                  </svg>
+                </div>
+                <input 
+                  type={showPassword ? "text" : "password"} 
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder={t.passwordPlaceholder} 
+                  required
+                  className="w-full h-full border-0 outline-none bg-transparent text-[#102c55] font-['Inter',sans-serif] text-[19px] md:text-[21px] font-medium px-[20px] pl-[4px]"
+                />
+                <button 
+                  type="button" 
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="w-[65px] h-full flex items-center justify-center border-0 bg-transparent cursor-pointer flex-shrink-0"
+                >
+                  <svg className="w-[30px] h-[30px] fill-none stroke-[#7890b1] stroke-[1.8] stroke-linecap-round stroke-linejoin-round" viewBox="0 0 24 24">
+                    <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z" />
+                    <circle cx="12" cy="12" r="2.5" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Options */}
+              <div className="flex items-center justify-between my-[25px] mx-[4px]">
+                <label className="flex items-center gap-[13px] text-[#7187a7] text-[17px] font-medium cursor-pointer">
+                  <input type="checkbox" className="absolute opacity-0 pointer-events-none peer" />
+                  <span className="w-[30px] h-[30px] border-2 border-[#91a6c4] rounded-[6px] bg-white relative peer-checked:bg-[#087cff] peer-checked:border-[#087cff] peer-checked:after:content-[''] peer-checked:after:absolute peer-checked:after:left-[8px] peer-checked:after:top-[4px] peer-checked:after:w-[7px] peer-checked:after:h-[13px] peer-checked:after:border-right-2 peer-checked:after:border-bottom-2 peer-checked:after:border-white peer-checked:after:rotate-45"></span>
+                  <span>{t.rememberMe}</span>
+                </label>
+                <a href="#" onClick={(e) => e.preventDefault()} className="text-[#006fff] no-underline text-[17px] font-semibold hover:underline whitespace-nowrap">
+                  {t.forgotPassword}
+                </a>
+              </div>
+
+              {/* Login Button */}
+              <button 
+                type="submit" 
+                className="w-full h-[76px] md:h-[82px] border-0 rounded-[40px] bg-gradient-to-r from-[#0875ff] to-[#147cff] text-white flex items-center justify-center gap-[25px] font-['Inter',sans-serif] text-[22px] md:text-[26px] font-medium cursor-pointer shadow-[0_15px_27px_rgba(0,113,255,0.20)] hover:-translate-y-[2px] hover:shadow-[0_18px_32px_rgba(0,113,255,0.28)] active:translate-y-0 transition-all"
+              >
+                <span>{t.loginBtn}</span>
+                <svg className="w-[36px] h-[26px] fill-none stroke-white stroke-[2] stroke-linecap-round stroke-linejoin-round" viewBox="0 0 28 20">
+                  <path d="M2 10h22" />
+                  <path d="M17 4l6 6-6 6" />
                 </svg>
-              </span>
-              <input 
-                type="email" 
-                placeholder={t.emailPlaceholder} 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 bg-white border border-slate-200/80 rounded-2xl outline-none text-sm font-medium text-slate-800 placeholder-slate-400 shadow-[0_2px_12px_rgba(0,0,0,0.03)] focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all" 
-                required 
-              />
+              </button>
+            </form>
+
+            {/* Divider */}
+            <div className="flex items-center gap-[20px] my-[30px]">
+              <span className="h-[2px] flex-1 bg-[#dce6f3]"></span>
+              <p className="text-[#7a90b0] text-[18px] font-medium">{t.or}</p>
+              <span className="h-[2px] flex-1 bg-[#dce6f3]"></span>
             </div>
 
-            {/* Password Input */}
-            <div className="relative flex items-center">
-              <span className="absolute left-4 text-slate-400">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-              </span>
-              <input 
-                type="password" 
-                placeholder={t.passwordPlaceholder} 
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-12 pr-12 py-4 bg-white border border-slate-200/80 rounded-2xl outline-none text-sm font-medium text-slate-800 placeholder-slate-400 shadow-[0_2px_12px_rgba(0,0,0,0.03)] focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all" 
-                required 
-              />
-              <span className="absolute right-4 text-slate-400 cursor-pointer">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
-              </span>
-            </div>
-
-            {/* Remember me & Forgot password */}
-            <div className="flex justify-between items-center px-1 text-xs py-1">
-              <label className="flex items-center gap-2 cursor-pointer text-slate-500 font-medium">
-                <input type="checkbox" className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500" />
-                {t.rememberMe}
-              </label>
-              <a href="#" onClick={(e) => e.preventDefault()} className="text-blue-600 font-semibold hover:underline">
-                {t.forgotPassword}
-              </a>
-            </div>
-
-            {/* Log In Button */}
+            {/* SSO Button */}
             <button 
-              type="submit" 
-              className="w-full py-4 mt-2 bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold text-sm rounded-2xl shadow-[0_10px_25px_rgba(37,99,235,0.35)] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+              type="button" 
+              onClick={() => setIsLoggedIn(true)}
+              className="w-full h-[76px] md:h-[82px] border-2 border-[#dce6f3] rounded-[28px] bg-white text-[#607b9f] flex items-center justify-center gap-[25px] font-['Inter',sans-serif] text-[21px] font-medium cursor-pointer hover:bg-[#f8fbff] hover:border-[#c7d7eb] transition-all"
             >
-              {t.loginBtn}
+              <svg className="w-[34px] h-[34px] fill-none stroke-[#7088aa] stroke-[1.8] stroke-linecap-round stroke-linejoin-round" viewBox="0 0 24 24">
+                <circle cx="12" cy="7" r="4" />
+                <path d="M4.5 21c0-4.1 3.4-7 7.5-7s7.5 2.9 7.5 7" />
+              </svg>
+              <span>{t.ssoBtn}</span>
             </button>
-          </form>
+          </section>
 
-          {/* Divider 'or' */}
-          <div className="flex items-center my-5 text-slate-300">
-            <div className="flex-1 h-px bg-slate-200"></div>
-            <span className="px-3 text-xs font-medium text-slate-400">{t.or}</span>
-            <div className="flex-1 h-px bg-slate-200"></div>
-          </div>
+          {/* Footer */}
+          <footer className="relative left-0 right-0 bottom-[10px] z-[10] flex items-center justify-center gap-[10px] text-[#8da5c8] text-[16px] font-medium">
+            <span>{t.brand}</span>
+            <b className="text-[13px] font-bold">•</b>
+            <span>Work Time</span>
+            <button onClick={toggleLanguage} className="ml-4 text-xs font-bold text-[#087cff] bg-[#edf6ff] px-3 py-1 rounded-full border border-[#dce6f3]">
+              {language}
+            </button>
+          </footer>
 
-          {/* SSO Button */}
-          <button 
-            type="button" 
-            onClick={() => setIsLoggedIn(true)}
-            className="w-full py-4 bg-white border border-slate-200/80 hover:bg-slate-50 text-slate-700 font-bold text-sm rounded-2xl shadow-[0_2px_12px_rgba(0,0,0,0.02)] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
-          >
-            <svg className="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
-            {t.ssoBtn}
-          </button>
-        </div>
-
-        {/* Footer info */}
-        <div className="text-center text-[11px] text-slate-400 font-medium relative z-10 py-2">
-          Qakk • Work Time
         </div>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col w-full min-h-[100dvh] bg-[#f8fbff] font-sans text-slate-800">
-      <div className="flex justify-between items-center px-6 py-4 bg-white border-b border-slate-100 sticky top-0 z-20 shadow-sm">
-        <span className="font-black text-xl tracking-tight text-slate-900">Qakk</span>
-        <button 
-          onClick={toggleLanguage}
-          className="text-xs font-bold text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full hover:bg-blue-100 transition-colors"
-        >
-          {language}
-        </button>
-      </div>
+    <div className="min-h-[100dvh] flex justify-center bg-[#eef3fa] md:py-10 font-['Inter',sans-serif] text-[#16345f]">
+      <div className="relative w-full max-w-[430px] min-h-[100dvh] bg-white flex flex-col justify-between px-7 py-8 md:rounded-[42px] md:shadow-[0_30px_80px_rgba(20,48,90,0.15)]">
+        <div className="flex justify-between items-center bg-white border-b border-[#dce6f3] pb-4">
+          <span className="font-bold text-2xl text-[#102c55]">Qakk</span>
+          <button onClick={toggleLanguage} className="text-xs font-bold text-[#087cff] bg-[#edf6ff] px-3.5 py-1.5 rounded-full border border-[#dce6f3]">
+            {language}
+          </button>
+        </div>
 
-      <div className="flex-1 flex flex-col items-center justify-center p-6">
-        <div className="w-full max-w-sm">
+        <div className="my-auto py-6">
           {!isOnline ? (
-            <div className="flex flex-col gap-4 bg-white p-6 rounded-3xl border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
+            <div className="flex flex-col gap-4 bg-white p-6 rounded-[28px] border-2 border-[#dce6f3]">
               <div>
-                <h2 className="text-2xl font-black text-slate-900 tracking-tight">Check In</h2>
-                <p className="text-xs text-slate-500 mt-0.5">You're just a few steps away from your shift!</p>
+                <h2 className="text-2xl font-bold text-[#102c55]">Check In</h2>
+                <p className="text-sm text-[#7086a7] mt-1">Enter your shift details below</p>
               </div>
 
               <div className="flex flex-col gap-3 mt-2">
@@ -258,45 +284,49 @@ export default function QakkWorkerApp() {
                   placeholder={t.eventPlaceholder} 
                   value={eventName}
                   onChange={(e) => setEventName(e.target.value)}
-                  className="w-full px-4 py-3.5 bg-slate-50 border border-slate-200/80 rounded-2xl outline-none text-sm placeholder-slate-400 focus:bg-white focus:border-blue-500 transition-all font-medium" 
+                  className="w-full px-4 py-4 bg-[#f8fbff] border-2 border-[#dce6f3] rounded-[20px] outline-none text-base text-[#102c55] font-medium focus:border-[#087cff]" 
                 />
                 <input 
                   type="text" 
                   placeholder={t.clientPlaceholder} 
                   value={clientName}
                   onChange={(e) => setClientName(e.target.value)}
-                  className="w-full px-4 py-3.5 bg-slate-50 border border-slate-200/80 rounded-2xl outline-none text-sm placeholder-slate-400 focus:bg-white focus:border-blue-500 transition-all font-medium" 
+                  className="w-full px-4 py-4 bg-[#f8fbff] border-2 border-[#dce6f3] rounded-[20px] outline-none text-base text-[#102c55] font-medium focus:border-[#087cff]" 
                 />
               </div>
 
               <button 
                 onClick={handleCheckIn}
                 disabled={!eventName || !clientName}
-                className="w-full py-4 mt-2 bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold text-sm rounded-2xl disabled:opacity-40 disabled:cursor-not-allowed shadow-[0_10px_25px_rgba(37,99,235,0.3)] active:scale-[0.98] transition-all"
+                className="w-full py-4 mt-2 bg-[#087cff] hover:bg-[#066ad9] text-white font-bold text-lg rounded-[24px] disabled:opacity-40 disabled:cursor-not-allowed shadow-[0_10px_25px_rgba(8,124,255,0.3)] transition-all"
               >
                 {t.checkInBtn}
               </button>
             </div>
           ) : (
-            <div className="flex flex-col gap-4 bg-white p-6 rounded-3xl border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
+            <div className="flex flex-col gap-4 bg-white p-6 rounded-[28px] border-2 border-[#dce6f3]">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-bold tracking-wider text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full uppercase">{t.currentEventLbl}</span>
-                <span className="text-xs text-slate-400 font-semibold">{startTime}</span>
+                <span className="text-xs text-[#7086a7] font-semibold">{startTime}</span>
               </div>
 
               <div>
-                <h3 className="text-2xl font-black text-slate-900 tracking-tight">{eventName}</h3>
-                <p className="text-sm text-slate-500 mt-1">{t.clientLbl}: <span className="font-bold text-slate-800">{clientName}</span></p>
+                <h3 className="text-2xl font-bold text-[#102c55]">{eventName}</h3>
+                <p className="text-sm text-[#7086a7] mt-1">{t.clientLbl}: <span className="font-bold text-[#102c55]">{clientName}</span></p>
               </div>
 
               <button 
                 onClick={handleCheckOut}
-                className="w-full py-4 mt-4 bg-rose-500 hover:bg-rose-600 text-white font-bold text-sm rounded-2xl shadow-[0_10px_25px_rgba(244,63,94,0.25)] active:scale-[0.98] transition-all"
+                className="w-full py-4 mt-4 bg-rose-500 hover:bg-rose-600 text-white font-bold text-lg rounded-[24px] shadow-[0_10px_25px_rgba(244,63,94,0.25)] transition-all"
               >
                 {t.checkOutBtn}
               </button>
             </div>
           )}
+        </div>
+
+        <div className="text-center text-xs text-[#8da5c8] font-medium">
+          Qakk • Work Time
         </div>
       </div>
     </div>
