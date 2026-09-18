@@ -16,7 +16,7 @@ export default function QakkWorkerApp() {
       brand: "Qakk",
       title1: "Work",
       title2: "Time",
-      subtitle: "Track your time,\nget more done.",
+      subtitle: "Track your time, get more done.",
       emailPlaceholder: "Email address",
       passwordPlaceholder: "Password",
       rememberMe: "Remember me",
@@ -24,7 +24,6 @@ export default function QakkWorkerApp() {
       loginBtn: "Log In →",
       or: "or",
       ssoBtn: "Sign in with SSO",
-      greeting: "Hello, Worker",
       eventPlaceholder: "Event Name (e.g. Gala)",
       clientPlaceholder: "Client / Company",
       checkInBtn: "Check In →",
@@ -39,7 +38,7 @@ export default function QakkWorkerApp() {
       brand: "Qakk",
       title1: "Work",
       title2: "Time",
-      subtitle: "Spor din tid,\nfå mere fra hånden.",
+      subtitle: "Spor din tid, få mere fra hånden.",
       emailPlaceholder: "E-mailadresse",
       passwordPlaceholder: "Adgangskode",
       rememberMe: "Husk mig",
@@ -47,7 +46,6 @@ export default function QakkWorkerApp() {
       loginBtn: "Log ind →",
       or: "eller",
       ssoBtn: "Log ind med SSO",
-      greeting: "Hej, Medarbejder",
       eventPlaceholder: "Begivenhedsnavn",
       clientPlaceholder: "Kunde / Virksomhed",
       checkInBtn: "Tjek ind →",
@@ -95,27 +93,27 @@ export default function QakkWorkerApp() {
 
   if (!isLoggedIn) {
     return (
-      <div className="flex flex-col items-center justify-between w-full h-[100dvh] bg-[#f8fbff] px-6 py-6 font-sans text-slate-800 relative overflow-y-auto">
-        {/* Top decorative blue gradient background shape mimicking the image */}
-        <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-bl from-blue-100/80 via-sky-100/40 to-transparent rounded-bl-full pointer-events-none -z-0"></div>
+      <div className="flex flex-col justify-between w-full min-h-[100dvh] bg-[#f8fbff] px-6 py-6 font-sans text-slate-800 relative overflow-hidden">
+        {/* Background decorative soft blue blob matching the generated image */}
+        <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-blue-100/90 via-sky-100/50 to-transparent rounded-bl-[100px] pointer-events-none z-0"></div>
 
-        {/* Top bar with Brand and Language switcher */}
-        <div className="w-full flex justify-between items-center relative z-10 max-w-sm">
-          <h1 className="text-3xl font-black text-[#0f172a] tracking-tight">{t.brand}</h1>
+        {/* Top Header */}
+        <div className="w-full flex justify-between items-center relative z-10">
+          <h1 className="text-3xl font-black text-[#0f172a] tracking-tight">Qakk</h1>
           <button 
             onClick={toggleLanguage}
-            className="text-xs font-bold text-blue-600 bg-white px-3.5 py-1.5 rounded-full shadow-sm border border-blue-100 hover:bg-blue-50 transition-all"
+            className="text-xs font-bold text-blue-600 bg-white px-4 py-2 rounded-full shadow-sm border border-blue-100 hover:bg-blue-50 transition-all"
           >
             {language}
           </button>
         </div>
 
-        {/* Main Content Card matching the reference image */}
-        <div className="w-full max-w-sm flex flex-col relative z-10 my-auto py-4">
+        {/* Main Form Area */}
+        <div className="w-full max-w-sm mx-auto flex flex-col relative z-10 my-auto py-2">
           
-          {/* Header section with illustration placeholder */}
-          <div className="flex justify-between items-start mb-6">
-            <div>
+          {/* Title & Illustration Row */}
+          <div className="flex justify-between items-start mb-8">
+            <div className="flex-1 pr-2">
               <h2 className="text-4xl font-black text-[#0f172a] tracking-tight leading-none mb-1">
                 {t.title1}
               </h2>
@@ -123,19 +121,19 @@ export default function QakkWorkerApp() {
                 {t.title2}
               </h2>
               <div className="w-8 h-1 bg-blue-500 rounded-full mb-3"></div>
-              <p className="text-slate-400 text-xs font-medium whitespace-pre-line leading-relaxed">
+              <p className="text-slate-400 text-xs font-medium leading-relaxed">
                 {t.subtitle}
               </p>
             </div>
 
-            {/* Modern 3D-style Clock Illustration Graphic */}
-            <div className="relative w-28 h-28 flex items-center justify-center bg-blue-500/10 rounded-3xl shadow-inner border border-blue-200/50">
-              <svg className="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" fill="white" />
+            {/* 3D-style Clock Graphic matching the image */}
+            <div className="relative w-28 h-28 flex items-center justify-center bg-white/80 backdrop-blur-md rounded-[2rem] shadow-[0_10px_30px_rgba(59,130,246,0.15)] border border-blue-100 flex-shrink-0">
+              <svg className="w-14 h-14 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" fill="#eff6ff" />
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 7v5l3 3" />
               </svg>
-              {/* Floating check badge overlay */}
-              <div className="absolute -bottom-1 -right-1 w-9 h-9 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg border-2 border-white">
+              {/* Floating check badge */}
+              <div className="absolute -bottom-1.5 -right-1.5 w-9 h-9 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg border-2 border-white">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
@@ -157,7 +155,7 @@ export default function QakkWorkerApp() {
                 placeholder={t.emailPlaceholder} 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 bg-white border border-slate-200/80 rounded-2xl outline-none text-sm font-medium text-slate-800 placeholder-slate-400 shadow-[0_2px_10px_rgba(0,0,0,0.02)] focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all" 
+                className="w-full pl-12 pr-4 py-4 bg-white border border-slate-200/80 rounded-2xl outline-none text-sm font-medium text-slate-800 placeholder-slate-400 shadow-[0_2px_12px_rgba(0,0,0,0.03)] focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all" 
                 required 
               />
             </div>
@@ -174,7 +172,7 @@ export default function QakkWorkerApp() {
                 placeholder={t.passwordPlaceholder} 
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-12 pr-12 py-4 bg-white border border-slate-200/80 rounded-2xl outline-none text-sm font-medium text-slate-800 placeholder-slate-400 shadow-[0_2px_10px_rgba(0,0,0,0.02)] focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all" 
+                className="w-full pl-12 pr-12 py-4 bg-white border border-slate-200/80 rounded-2xl outline-none text-sm font-medium text-slate-800 placeholder-slate-400 shadow-[0_2px_12px_rgba(0,0,0,0.03)] focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all" 
                 required 
               />
               <span className="absolute right-4 text-slate-400 cursor-pointer">
@@ -199,7 +197,7 @@ export default function QakkWorkerApp() {
             {/* Log In Button */}
             <button 
               type="submit" 
-              className="w-full py-4 mt-2 bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold text-sm rounded-2xl shadow-[0_10px_25px_rgba(37,99,235,0.3)] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+              className="w-full py-4 mt-2 bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold text-sm rounded-2xl shadow-[0_10px_25px_rgba(37,99,235,0.35)] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
             >
               {t.loginBtn}
             </button>
@@ -212,11 +210,11 @@ export default function QakkWorkerApp() {
             <div className="flex-1 h-px bg-slate-200"></div>
           </div>
 
-          {/* SSO Sign in button */}
+          {/* SSO Button */}
           <button 
             type="button" 
             onClick={() => setIsLoggedIn(true)}
-            className="w-full py-4 bg-white border border-slate-200/80 hover:bg-slate-50 text-slate-700 font-bold text-sm rounded-2xl shadow-[0_2px_10px_rgba(0,0,0,0.02)] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+            className="w-full py-4 bg-white border border-slate-200/80 hover:bg-slate-50 text-slate-700 font-bold text-sm rounded-2xl shadow-[0_2px_12px_rgba(0,0,0,0.02)] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
           >
             <svg className="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -226,7 +224,7 @@ export default function QakkWorkerApp() {
         </div>
 
         {/* Footer info */}
-        <div className="text-center text-[11px] text-slate-400 font-medium relative z-10">
+        <div className="text-center text-[11px] text-slate-400 font-medium relative z-10 py-2">
           Qakk • Work Time
         </div>
       </div>
@@ -234,17 +232,15 @@ export default function QakkWorkerApp() {
   }
 
   return (
-    <div className="flex flex-col w-full h-[100dvh] bg-[#f8fbff] font-sans text-slate-800">
+    <div className="flex flex-col w-full min-h-[100dvh] bg-[#f8fbff] font-sans text-slate-800">
       <div className="flex justify-between items-center px-6 py-4 bg-white border-b border-slate-100 sticky top-0 z-20 shadow-sm">
-        <span className="font-black text-xl tracking-tight text-slate-900">{t.brand}</span>
-        <div className="flex items-center gap-3">
-          <button 
-            onClick={toggleLanguage}
-            className="text-xs font-bold text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full hover:bg-blue-100 transition-colors"
-          >
-            {language}
-          </button>
-        </div>
+        <span className="font-black text-xl tracking-tight text-slate-900">Qakk</span>
+        <button 
+          onClick={toggleLanguage}
+          className="text-xs font-bold text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full hover:bg-blue-100 transition-colors"
+        >
+          {language}
+        </button>
       </div>
 
       <div className="flex-1 flex flex-col items-center justify-center p-6">
